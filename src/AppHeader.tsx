@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 
