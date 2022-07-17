@@ -26,6 +26,8 @@ module.exports = {
   ],
   rules: {
     "quotes": ["error", "double"],
+    "linebreak-style": ["error", "windows"],
     "import/no-unresolved": 0,
+    "require-jsdoc": 0,
   },
 };

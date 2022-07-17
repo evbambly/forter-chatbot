@@ -8,6 +8,8 @@ export type OnlineUsersDrawerProps = {
     setIsDrawerOpen: (isOpen: boolean) => void
 }
 
+const SHOW_ONLINE_USERS_DISABLED = true
+
 export const OnlineUsersDrawer = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
@@ -22,11 +24,11 @@ export const OnlineUsersDrawer = () => {
     }));
 
     return (
-        <>
+        <div style={{visibility: "hidden"}}>
             <Button onClick={() => setIsDrawerOpen(true)}>Show Online Users</Button>
             <SwipeableDrawer
                 anchor="bottom"
-                open={isDrawerOpen}
+                open={!SHOW_ONLINE_USERS_DISABLED && isDrawerOpen}
                 onClose={() => setIsDrawerOpen(false)}
                 onOpen={() => setIsDrawerOpen(true)}
                 swipeAreaWidth={56}
@@ -37,10 +39,10 @@ export const OnlineUsersDrawer = () => {
 
             >
                 <Puller />
-                <Typography sx={{ p: 2, color: 'text.secondary' }}>51 results</Typography>
+                <Typography sx={{ p: 2, color: 'text.secondary' }}>Online Users:</Typography>
 
                 <Skeleton variant="rectangular" height="100%" />
             </SwipeableDrawer>
-        </>
+        </div>
     )
 }
