@@ -6,7 +6,6 @@ import { Message } from "./types";
 import { DocumentData } from "firebase/firestore";
 import { ScrollTop } from "./ScrollTop";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { getUniqueMessages } from "./Utils";
 
 export type MessageListProps = {
   name: string,
