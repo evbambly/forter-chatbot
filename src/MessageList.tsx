@@ -24,7 +24,7 @@ export const MessageList = ({ name, setMessages, messages }: MessageListProps) =
       }
     }
     pullMessages()
-  }, [])
+  }, [setMessages])
 
 
 
@@ -39,7 +39,7 @@ export const MessageList = ({ name, setMessages, messages }: MessageListProps) =
     })
 
     return () => unsubscribe()
-  }, [])
+  }, [setMessages])
 
 
   return (
