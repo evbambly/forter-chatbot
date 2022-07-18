@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { AppHeader } from './AppHeader';
-import { InputMessage } from './InputMessage';
-import { MessageList } from './MessageList';
+import { AppHeader } from './sections/AppHeader';
+import { InputMessage } from './sections/InputMessage';
+import { MessageList } from './sections/MessageList';
 import { OnlineUsersDrawer } from './OnlineUsersDrawer';
 import { FirebaseApp, getApp, initializeApp } from "firebase/app";
-import { firebaseConfig } from './FirebaseConfig';
-import { getOrDefineName, getUniqueMessages } from './Utils';
-import { LinearProgress } from '@mui/material';
-import { Message } from './types';
+import { firebaseConfig } from './firebase/FirebaseConfig';
+import { getOrDefineName, getUniqueMessages } from './logic/Utils';
+import { LinearProgress, Typography } from '@mui/material';
+import { Message } from './logic/Types';
 import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
-
 
 function App() {
   const [firebaseApp, setFirebaseApp] = useState<FirebaseApp>()
@@ -30,11 +29,13 @@ function App() {
   }
   const name = getOrDefineName()
 
+  
+
   return (
-    <div className="App">
+    <div className="App" style={{display: "flex", flexDirection: "column"}}>
       <AppHeader setMessages={sortMessages} />
       {!firebaseApp && <LinearProgress />}
-      Your Name Is {name}
+      <Typography sx={{margin: "1%"}}>Your Name Is {name}</Typography> 
       {firebaseApp && <MessageList name={name} messages={messages} setMessages={sortMessages} />}
       <InputMessage name={name} />
       <OnlineUsersDrawer />

@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Message } from './types';
+import { Message } from './Types';
 
 export const getOrDefineName = () => {
    let name = localStorage.getItem("name")

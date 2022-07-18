@@ -1,7 +1,7 @@
 import { IconButton, InputBase, Paper } from "@mui/material"
 import SendIcon from '@mui/icons-material/Send';
 import { KeyboardEventHandler, useState } from "react";
-import { sendMessage } from "./Functions";
+import { sendMessage } from "../firebase/Functions";
 
 export type InputMessageProps = {
     name: string
@@ -26,7 +26,7 @@ export const InputMessage = ({ name }: InputMessageProps) => {
     return (
         <Paper
             component="form"
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "80vw", margin: "auto" }}
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "80vw", margin: "5% auto" }}
         >
             <InputBase
                 sx={{ ml: 1, flex: 1 }}

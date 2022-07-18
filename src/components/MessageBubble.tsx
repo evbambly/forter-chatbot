@@ -1,5 +1,5 @@
 import { Box, Card, Typography } from "@mui/material"
-import { Message } from "./types"
+import { Message } from "../logic/Types"
 
 export type MessageProps = {
     name: string,

@@ -1,8 +1,8 @@
 import { AppBar, Box, IconButton, Toolbar, Tooltip, Typography } from "@mui/material"
-import SearchIcon from '@mui/icons-material/Search';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
-import { getMessages } from "./Functions";
-import { Message } from "./types";
+import { getMessages } from "../firebase/Functions";
+import { Message } from "../logic/Types";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 export type AppHeaderProps = {
     setMessages: (messages: Message[]) => void
@@ -10,7 +10,7 @@ export type AppHeaderProps = {
 
 export const AppHeader = ({ setMessages }: AppHeaderProps) => {
 
-    const handleClick = async () => {
+    const handleGetAllMessages = async () => {
         const messages = await getMessages()(0)
         if (Array.isArray(messages.data))
             setMessages(messages.data)
@@ -21,24 +21,22 @@ export const AppHeader = ({ setMessages }: AppHeaderProps) => {
         const anchor = (
             (event.target as HTMLDivElement).ownerDocument || document
         ).querySelector('#back-to-top-anchor');
-
+        
         if (anchor) {
-            anchor.scrollIntoView({
-                block: 'center',
-            });
+            anchor.scrollIntoView({ behavior: 'smooth', block: "start", inline: "nearest" });
         }
     };
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" id="back-to-top-anchor">
+        <Box>
+            <AppBar position="static">
                 <Toolbar>
                     <Tooltip title="Get all messages">
                         <IconButton
                             size="large"
                             color="inherit"
                             aria-label="menu"
-                            onClick={handleClick}
+                            onClick={handleGetAllMessages}
                         >
                             <RotateLeftIcon />
                         </IconButton>
@@ -53,7 +51,7 @@ export const AppHeader = ({ setMessages }: AppHeaderProps) => {
                             aria-label="menu"
                             onClick={handleScrollTop}
                         >
-                            <SearchIcon />
+                            <KeyboardArrowUpIcon />
                         </IconButton>
                     </Tooltip>
                 </Toolbar>

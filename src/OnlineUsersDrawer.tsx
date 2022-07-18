@@ -24,7 +24,7 @@ export const OnlineUsersDrawer = () => {
     }));
 
     return (
-        <div style={{visibility: "hidden"}}>
+        <div style={{display: "none"}}>
             <Button onClick={() => setIsDrawerOpen(true)}>Show Online Users</Button>
             <SwipeableDrawer
                 anchor="bottom"

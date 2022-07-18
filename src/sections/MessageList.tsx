@@ -1,11 +1,9 @@
-import { Box, Fab } from "@mui/material"
+import { Box } from "@mui/material"
 import { useEffect } from "react";
-import { MessageBubble } from "./MessageBubble"
-import { getMessages, listenToNewMessages } from "./Functions";
-import { Message } from "./types";
+import { MessageBubble } from "../components/MessageBubble"
+import { getMessages, listenToNewMessages } from "../firebase/Functions";
+import { Message } from "../logic/Types";
 import { DocumentData } from "firebase/firestore";
-import { ScrollTop } from "./ScrollTop";
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 export type MessageListProps = {
   name: string,
@@ -45,17 +43,13 @@ export const MessageList = ({ name, setMessages, messages }: MessageListProps) =
 
 
   return (
-    <Box sx={{ height: "73vh", display: "block", overflowY: "scroll" }} id="back-to-top-anchor">
+    <Box sx={{ height: "76vh", display: "block", overflowY: "scroll", flexGrow: 1 }}>
+      <div style={{visibility: "hidden"}}  id="back-to-top-anchor" />
       {messages?.length === 0 ? "No Messages Yet!" :
         messages?.map(message =>
           <MessageBubble name={name} message={message} key={message.sentAtMillis + message.text} />
         )
       }
-      <ScrollTop>
-        <Fab size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
     </Box>
   )
 }
