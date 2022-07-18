@@ -44,7 +44,7 @@ export const AppHeader = ({ setMessages }: AppHeaderProps) => {
                     <Typography variant="h6" sx={{ flexGrow: 1 }}>
                         Chat App
                     </Typography>
-                    <Tooltip title="Search">
+                    <Tooltip title="Back to Top">
                         <IconButton
                             size="large"
                             color="inherit"
