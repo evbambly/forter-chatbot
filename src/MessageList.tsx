@@ -24,7 +24,8 @@ export const MessageList = ({ name, setMessages, messages }: MessageListProps) =
       }
     }
     pullMessages()
-  }, [setMessages])
+    // eslint-disable-next-line
+  }, [])
 
 
 
@@ -39,7 +40,8 @@ export const MessageList = ({ name, setMessages, messages }: MessageListProps) =
     })
 
     return () => unsubscribe()
-  }, [setMessages])
+    // eslint-disable-next-line
+  }, [])
 
 
   return (

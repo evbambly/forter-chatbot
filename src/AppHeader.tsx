@@ -16,9 +16,22 @@ export const AppHeader = ({ setMessages }: AppHeaderProps) => {
             setMessages(messages.data)
     }
 
+
+    const handleScrollTop = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const anchor = (
+            (event.target as HTMLDivElement).ownerDocument || document
+        ).querySelector('#back-to-top-anchor');
+
+        if (anchor) {
+            anchor.scrollIntoView({
+                block: 'center',
+            });
+        }
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" id="back-to-top-anchor">
                 <Toolbar>
                     <Tooltip title="Get all messages">
                         <IconButton
@@ -36,8 +49,9 @@ export const AppHeader = ({ setMessages }: AppHeaderProps) => {
                     <Tooltip title="Search">
                         <IconButton
                             size="large"
-                            color="primary"
+                            color="inherit"
                             aria-label="menu"
+                            onClick={handleScrollTop}
                         >
                             <SearchIcon />
                         </IconButton>
